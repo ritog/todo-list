@@ -14,8 +14,27 @@
         <li>Simple!</li>
       </ul>
     </div>
-    <button onclick='handlers.displayTodos()'>Display To-Dos</button>
-    <button onclick='handlers.toggleAll()'>Toggle All</button>
+    <div>
+      <button onclick='handlers.displayTodos()'>Display To-Dos</button>
+      <button onclick='handlers.toggleAll()'>Toggle All</button>
+    </div>
+
+    <div>
+      <button onclick='handlers.addTodo()'>Add To-Do</button>
+      <input id='addTodoTextInput' type='text'>
+    </div>
+
+    <div>
+      <button onclick='handlers.changeTodo()'>Change To-Do</button>
+      <input id='changeTodoPositionInput' type='number'>
+      <input id='changeTodoTextInput' type='text'>
+    </div>
+
+    <div>
+      <button onclick='handlers.deleteTodo()'>Delete To-Do</button>
+      <input id='deleteTodoPositionInput' type='number'>
+    </div>
+
     <script>
       var todoList = {
        todos: [],
@@ -41,7 +60,6 @@
          this.displayTodos();
        },
        changeTodo: function(position, todoText) {
-         debugger; 
          this.todos[position].todoText = todoText;
          this.displayTodos();
        },
@@ -80,6 +98,23 @@
       },
         toggleAll: function() {
           todoList.toggleAll();
+        },
+        addTodo: function() {
+          var addTodoTextInput = document.getElementById('addTodoTextInput')
+          todoList.addTodo(addTodoTextInput.value);
+          addTodoTextInput.value = '';
+        },
+        changeTodo: function() {
+          var changeTodoPositionInput = document.getElementById('changeTodoPositionInput');
+          var changeTodoTextInput = document.getElementById('changeTodoTextInput');
+          todoList.changeTodo(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value);
+          changeTodoPositionInput.value = '';
+          changeTodoTextInput.value = '';
+        },
+        deleteTodo: function() {
+          var deleteTodoPositionInput = document.getElementById('deleteTodoPositionInput');
+          todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
+          deleteTodoPositionInput.value = '';
         }
       }
     </script>

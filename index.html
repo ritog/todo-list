@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+
 <html>
+
   <head>
     <title>To-Do List</title>
   </head>
@@ -9,9 +11,11 @@
       <ul>
         <li>Enter tasks</li>
         <li>Complete when finished!</li>
-        <li>Simple as that!</li>
+        <li>Simple!</li>
       </ul>
     </div>
+    <button id='displayTodosButton'>Display To-Dos</button>
+    <button id='toggleAllButton'>Toggle All</button>
     <script>
       var todoList = {
        todos: [],
@@ -50,29 +54,29 @@
          this.displayTodos();
        },
        toggleAll: function(){
-        var totalTodos = this.todos.length;
-        var completedTodos = 0;
-        for (var i=0; i < totalTodos; i++) {
-          if (this.todos[i].completed === true) {
-            completedTodos++;
-          }
-        }
-        if (completedTodos === totalTodos) { // if every task is done, undo them
-          for (var i=0; i<totalTodos; i++) {
-            this.todos[i].completed = false;
-          }
-        } else { // otherwise make everything done
-          for (var i=0; i<totalTodos; i++) {
-            this.todos[i].completed = true;
-          } 
-        }
-        this.displayTodos();
-      }
+         var totalTodos = this.todos.length;
+         var completedTodos = 0;
+         for (var i=0; i < totalTodos; i++) {
+           if (this.todos[i].completed === true) {
+             completedTodos++;
+           }
+         }
+         if (completedTodos === totalTodos) { // if every task is done, undo them
+           for (var i=0; i<totalTodos; i++) {
+             this.todos[i].completed = false;
+           }
+         } else { // otherwise make everything done
+           for (var i=0; i<totalTodos; i++) {
+             this.todos[i].completed = true;
+           } 
+         }
+         this.displayTodos();
+       }
       };
       var displayTodosButton = document.getElementById('displayTodosButton');
-      console.log(displayTodosButton);
+      displayTodosButton.addEventListener('click', function() {
+        todoList.displayTodos();
+      })
     </script>
-    <button id='displayTodosButton'>Display To-Dos</button>
-    <button id='toggleAllButton'>Toggle All</button>
   </body>
 </html>

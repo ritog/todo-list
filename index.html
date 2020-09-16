@@ -14,8 +14,8 @@
         <li>Simple!</li>
       </ul>
     </div>
-    <button id='displayTodosButton'>Display To-Dos</button>
-    <button id='toggleAllButton'>Toggle All</button>
+    <button onclick='handlers.displayTodos()'>Display To-Dos</button>
+    <button onclick='handlers.toggleAll()'>Toggle All</button>
     <script>
       var todoList = {
        todos: [],
@@ -41,7 +41,8 @@
          this.displayTodos();
        },
        changeTodo: function(position, todoText) {
-        this.todos[position].todoText = todoText;
+         debugger; 
+         this.todos[position].todoText = todoText;
          this.displayTodos();
        },
        deleteTodo: function(position) {
@@ -73,14 +74,14 @@
          this.displayTodos();
        }
       };
-      var displayTodosButton = document.getElementById('displayTodosButton');
-      displayTodosButton.addEventListener('click', function() {
+      var handlers = {
+        displayTodos: function() {
         todoList.displayTodos();
-      })
-      var toggleAllButton = document.getElementById('toggleAllButton');
-      displayTodosButton.addEventListener('click', function() {
-        todoList.toggleAll();
-      })
+      },
+        toggleAll: function() {
+          todoList.toggleAll();
+        }
+      }
     </script>
   </body>
 </html>

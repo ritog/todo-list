@@ -35,6 +35,11 @@
       <input id='deleteTodoPositionInput' type='number'>
     </div>
 
+    <div>
+      <button onclick='handlers.toggleTodo()'>Toggle To-Do</button>
+      <input id='toggleTodoPositionInput' type='number'>
+    </div>
+
     <script>
       var todoList = {
        todos: [],
@@ -115,6 +120,11 @@
           var deleteTodoPositionInput = document.getElementById('deleteTodoPositionInput');
           todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
           deleteTodoPositionInput.value = '';
+        },
+        toggleTodo: function() {
+          var toggleTodoPositionInput = document.getElementById('toggleTodoPositionInput');
+          todoList.toggleCompleted(toggleTodoPositionInput.valueAsNumber);
+          toggleTodoPositionInput = '';
         }
       }
     </script>
